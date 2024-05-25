@@ -4,7 +4,7 @@ go 1.15
 
 require (
 	github.com/agnivade/levenshtein v1.1.1
-	github.com/golang/protobuf v1.2.0
+	github.com/golang/protobuf v1.5.4
 	github.com/tatsushid/go-fastping v0.0.0-20160109021039-d7bb493dee3e
 	golang.org/x/net v0.0.0-20190311031020-56fb01167e7d // indirect
 	golang.org/x/sync v0.7.0
