@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -11,7 +12,10 @@ func main() {
 		pusher, ok := w.(http.Pusher)
 		if ok {
 			fmt.Println("Push /image")
-			pusher.Push(imgPath, nil)
+			err := pusher.Push(imgPath, nil)
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 		w.Header().Add("Content-Type", "text/html")
 		fmt.Fprintf(w, `<html><body><img src="%s"/>`+

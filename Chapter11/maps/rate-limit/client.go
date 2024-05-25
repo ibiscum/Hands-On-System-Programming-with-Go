@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/PacktPublishing/Hands-On-Systems-Programming-with-Go/Chapter11/maps"
+	"github.com/ibiscum/Hands-On-Systems-Programming-with-Go/Chapter11/maps"
 )
 
 func main() {

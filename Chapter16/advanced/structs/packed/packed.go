@@ -50,7 +50,8 @@ type myStruct struct {
 func unpack(i *C.myStruct) (m myStruct) {
 	b := bytes.NewBuffer(C.GoBytes(unsafe.Pointer(i), C.sizeof_myStruct))
 	for _, v := range []interface{}{&m.a, &m.b, &m.c, &m.d, &m.e} {
-		binary.Read(b, binary.LittleEndian, v)
+		err := binary.Read(b, binary.LittleEndian, v)
+		log.Fatal(err)
 	}
 	return
 }

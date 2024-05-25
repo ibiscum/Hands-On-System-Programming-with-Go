@@ -8,7 +8,7 @@ import (
 	"os/user"
 	"path/filepath"
 
-	"github.com/PacktPublishing/Hands-On-Systems-Programming-with-Go/Chapter06/advanced/state/command"
+	"github.com/ibiscum/Hands-On-Systems-Programming-with-Go/Chapter06/advanced/state/command"
 )
 
 func init() {

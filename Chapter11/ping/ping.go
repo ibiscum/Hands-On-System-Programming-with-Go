@@ -30,7 +30,6 @@ func (p pingPool) Put(v *fastping.Pinger) {
 	case p <- v:
 	case <-time.After(wait):
 	}
-	return
 }
 
 func help(ifaces []net.IP) {
@@ -73,21 +72,22 @@ func main() {
 			}()
 			p.AddIPAddr(&net.IPAddr{IP: makeIP(ip, i)})
 			p.OnRecv = func(a *net.IPAddr, _ time.Duration) { address <- a.IP }
-			p.Run()
+			err := p.Run()
+			log.Fatal(err)
 		}(i)
 	}
-i = 0
-for {
-    select {
-    case ip := <-address:
-        log.Printf("Found %s", ip)
-    case <-done:
-        if i >= bits-ones {
-            return
-        }
-        i++
-    }
-}
+	i = 0
+	for {
+		select {
+		case ip := <-address:
+			log.Printf("Found %s", ip)
+		case <-done:
+			if i >= bits-ones {
+				return
+			}
+			i++
+		}
+	}
 }
 
 func makeIP(ip net.IP, i int) net.IP {

@@ -1,7 +1,6 @@
 
 
-
-# Hands-On System Programming with Go 
+# Hands-On System Programming with Go
 
 <a href="https://www.packtpub.com/application-development/hands-systems-programming-go?utm_source=github&utm_medium=repository&utm_campaign=9781789804072"><img src="https://packt-type-cloud.s3.amazonaws.com/uploads/sites/3122/2019/07/cover.png" alt="Hands-On System Programming with Go " height="256px" align="right"></a>
 
@@ -13,17 +12,17 @@ This is the code repository for [Hands-On System Programming with Go ](https://w
 System software and applications are usually created using low level programming languages such as C/C++. Go is a modern language which combines simplicity, concurrency and performance which makes it a great candidate for building system applications. The book is a guide for building system applications for Linux and OS X using Golang.
 
 This book covers the following exciting features:
-* Gain knowledge of Unix system programming 
-* Understand and use Daemon Processes in dependency implementation 
-* Explore and use the Go standard library to encode complex data structures 
-* Gain insights into Golang internals 
-* Master the Go concurrency model and its patterns 
-* Become adept at implementing the Sync and Atomic Packages 
-* Understand Go allocation and Memory allocation 
+* Gain knowledge of Unix system programming
+* Understand and use Daemon Processes in dependency implementation
+* Explore and use the Go standard library to encode complex data structures
+* Gain insights into Golang internals
+* Master the Go concurrency model and its patterns
+* Become adept at implementing the Sync and Atomic Packages
+* Understand Go allocation and Memory allocation
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1789804078) today!
 
-<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
+<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/ibiscum/GitHub/master/GitHub.png"
 alt="https://www.packtpub.com/" border="5" /></a>
 
 ## Instructions and Navigations
@@ -62,8 +61,6 @@ is a software developer who specializes in backend and distributed systems. Go h
 ### Suggestions and Feedback
 [Click here](https://docs.google.com/forms/d/e/1FAIpQLSdy7dATC6QmEL81FIUuymZ0Wy9vH1jHkvpY57OiMeKGqib_Ow/viewform) if you have any feedback or suggestions.
 
-
 ### Download a free PDF
-
- <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
 <p align="center"> <a href="https://packt.link/free-ebook/9781789804072">https://packt.link/free-ebook/9781789804072 </a> </p>
