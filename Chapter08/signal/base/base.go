@@ -8,7 +8,7 @@ import (
 
 func main() {
 	log.Println("Start application...")
-	c := make(chan os.Signal)
+	c := make(chan os.Signal, 1)
 	signal.Notify(c)
 	log.Println("Exit with signal:", <-c)
 }

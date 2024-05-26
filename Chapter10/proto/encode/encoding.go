@@ -14,9 +14,11 @@ func main() {
 		YearOfBirth: 1834,
 		Job:         "professor emeritus",
 	}
-	b := proto.NewBuffer(nil)
-	if err := b.EncodeMessage(&char); err != nil {
-		log.Fatalln(err)
+
+	out, err := proto.Marshal(&char)
+	if err != nil {
+		log.Fatalln("Failed to encode address book:", err)
 	}
-	log.Printf("%q", b.Bytes())
+
+	log.Printf("%+v", out)
 }

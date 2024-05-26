@@ -16,7 +16,10 @@ func main() {
 	ctx, canc := context.WithCancel(context.Background())
 	defer canc()
 	mux.HandleFunc("/shutdown", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("OK"))
+		_, err := w.Write([]byte("OK"))
+		if err != nil {
+			log.Fatal(err)
+		}
 		canc()
 	})
 	go func() {

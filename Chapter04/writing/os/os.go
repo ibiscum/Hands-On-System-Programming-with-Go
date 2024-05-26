@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 )
 
@@ -12,7 +11,7 @@ func main() {
 		return
 	}
 	// the second argument, the content, needs to be casted to a byte slice
-	if err := ioutil.WriteFile(os.Args[1], []byte(os.Args[2]), 0644); err != nil {
+	if err := os.WriteFile(os.Args[1], []byte(os.Args[2]), 0644); err != nil {
 		fmt.Println("Error:", err)
 	}
 }

@@ -70,7 +70,7 @@ func main() {
 	case "stop":
 		err = stopApp()
 	default:
-		helpApp()
+		err = helpApp()
 	}
 	if err != nil {
 		fmt.Println(cmd, "error:", err)
@@ -80,7 +80,7 @@ func main() {
 func installApp() error {
 	_, err := os.Stat(initdFile)
 	if err == nil {
-		return errors.New("Already installed")
+		return errors.New("already installed")
 	}
 	f, err := os.OpenFile(initdFile, os.O_CREATE|os.O_WRONLY, 0755)
 	if err != nil {
@@ -223,7 +223,7 @@ func runApp() error {
 	for {
 		time.Sleep(time.Second)
 	}
-	return nil
+	// return nil
 }
 
 func helpApp() error {

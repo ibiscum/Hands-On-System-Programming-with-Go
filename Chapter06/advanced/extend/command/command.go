@@ -4,13 +4,14 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"strings"
 
 	"github.com/agnivade/levenshtein"
 )
 
 // ErrDuplicateCommand is returned when two commands have the same name
-var ErrDuplicateCommand = errors.New("Duplicate command")
+var ErrDuplicateCommand = errors.New("duplicate command")
 
 // Command represents a terminal command
 type Command interface {
@@ -72,8 +73,15 @@ func (b Base) Run(input io.Reader, output io.Writer, args ...string) (exit bool)
 }
 
 func init() {
-	Register(Base{Name: "help", Help: "Shows available commands", Action: helpAction})
-	Register(Base{Name: "exit", Help: "Exits the application", Action: exitAction})
+	err := Register(Base{Name: "help", Help: "Shows available commands", Action: helpAction})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = Register(Base{Name: "exit", Help: "Exits the application", Action: exitAction})
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func helpAction(in io.Reader, w io.Writer, args ...string) bool {

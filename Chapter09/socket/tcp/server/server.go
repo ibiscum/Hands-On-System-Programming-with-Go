@@ -42,11 +42,15 @@ func handleConn(conn net.Conn) {
 				log.Println("<-", err)
 				return
 			}
-			if nerr, ok := err.(net.Error); ok && !nerr.Temporary() {
-				log.Println("<- Network error:", err)
+			// if nerr, ok := err.(net.Error); ok && !nerr.Temporary() {
+			// 	log.Println("<- Network error:", err)
+			// 	return
+			// }
+			nerr, ok := err.(net.Error)
+			if !ok {
+				log.Println("<- Message error:", nerr)
 				return
 			}
-			log.Println("<- Message error:", err)
 			continue
 		}
 		switch msg = strings.TrimSpace(msg); msg {

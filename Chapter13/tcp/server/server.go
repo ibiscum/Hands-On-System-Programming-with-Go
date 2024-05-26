@@ -21,7 +21,7 @@ func main() {
 	ctx, canc := context.WithCancel(context.Background())
 	defer canc()
 
-	c := make(chan os.Signal)
+	c := make(chan os.Signal, 1)
 	signal.Notify(c, syscall.SIGTERM, syscall.SIGINT)
 
 	go func() {
@@ -65,10 +65,15 @@ func handleConn(ctx context.Context, canc func(), conn net.Conn) {
 		for {
 			msg, err := r.ReadString('\n')
 			if err != nil {
-				if nerr, ok := err.(net.Error); ok && !nerr.Temporary() {
-					log.Println("<- Network error:", err)
+				nerr, ok := err.(net.Error)
+				if !ok {
+					log.Println("<- Message error:", nerr)
 					return
 				}
+				// if nerr, ok := err.(net.Error); ok && !nerr.Temporary() {
+				// 	log.Println("<- Network error:", err)
+				// 	return
+				// }
 				if err == io.EOF {
 					return
 				}

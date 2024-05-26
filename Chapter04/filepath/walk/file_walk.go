@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 )
@@ -21,7 +22,7 @@ func main() {
 		files int
 		dirs  int
 	}
-	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+	err = filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		// walk the tree to count files and folders
 		if info.IsDir() {
 			c.dirs++
@@ -31,5 +32,8 @@ func main() {
 		fmt.Println("-", path)
 		return nil
 	})
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("Total: %d files in %d directories", c.files, c.dirs)
 }

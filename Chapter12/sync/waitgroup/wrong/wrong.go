@@ -7,9 +7,11 @@ import (
 
 func main() {
 	wg := sync.WaitGroup{}
+	wg.Add(1)
+
 	for i := 1; i < 10; i++ {
 		go func(a int) {
-			wg.Add(1)
+			// wg.Add(1)
 			for i := 1; i <= 10; i++ {
 				fmt.Printf("%dx%d=%d\n", a, i, a*i)
 			}

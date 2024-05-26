@@ -32,7 +32,7 @@ func main() {
 		for i, l := 0, len(msg); i < l/2; i++ {
 			msg[i], msg[l-1-i] = msg[l-1-i], msg[i]
 		}
-		msg = append(msg, '\n')
+		// msg = append(msg, '\n')
 		if _, err := conn.WriteTo(b[:n], addr); err != nil {
 			log.Println("->", addr, "Send error:", err)
 		}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os/exec"
 )
 
@@ -14,5 +15,8 @@ func main() {
 	fmt.Println("Cmd: ", cmd.Args[0])
 	fmt.Println("Args:", cmd.Args[1:])
 	fmt.Println("PID: ", cmd.Process.Pid)
-	cmd.Wait()
+	err := cmd.Wait()
+	if err != nil {
+		log.Fatal(err)
+	}
 }

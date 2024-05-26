@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"log"
 	"math/rand"
 	"os"
 	"path/filepath"
@@ -15,16 +16,23 @@ import (
 )
 
 func init() {
-	command.Register(command.Base{
+	err := command.Register(command.Base{
 		Name:   "shuffle",
 		Help:   "Shuffles a list of strings",
 		Action: shuffleAction,
 	})
-	command.Register(command.Base{
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = command.Register(command.Base{
 		Name:   "print",
 		Help:   "Prints a file",
 		Action: printAction,
 	})
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
