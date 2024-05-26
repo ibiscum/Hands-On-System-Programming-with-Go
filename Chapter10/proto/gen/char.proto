@@ -1,6 +1,8 @@
 syntax = "proto3";
 package gen;
 
+option go_package = "github.com/ibiscum/Hands-On-System-Programming-with-Go/Chapter10/proto/gen";
+
 message Character {
     string name = 1;
     string surname = 2;

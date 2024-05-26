@@ -21,6 +21,7 @@ func main() {
 - name: "Francis"
   surname: Wayland Thurston
   job: anthropologist`)
+  
 	d := yaml.NewDecoder(r)
 	var c []Character
 	if err := d.Decode(&c); err != nil {

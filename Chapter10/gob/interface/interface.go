@@ -21,7 +21,7 @@ type Character struct {
 }
 
 func (c Character) Greet(w io.Writer) {
-	fmt.Fprintf(w, "Hello, my name is %s %s", c.Name, c.Surname)
+	fmt.Fprintf(w, "Hello, my name is %s%s", c.Name, c.Surname)
 	if c.Job != "" {
 		fmt.Fprintf(w, " and I am a %s", c.Job)
 	}

@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -54,17 +53,26 @@ func main() {
 	query := []byte(strings.Join(os.Args[2:], " "))
 	fmt.Printf("Searching for %q in %s...\n", query, root)
 	err = filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
 		if info.IsDir() {
 			return nil
 		}
-		fmt.Println(path)
+
+		_, err = fmt.Println(path)
+		if err != nil {
+			return err
+		}
+
 		f, err := os.Open(path)
 		if err != nil {
 			return err
 		}
 		defer f.Close()
 
-		_, err = ioutil.ReadAll(io.TeeReader(f, queryWriter{Query: query, Writer: os.Stdout}))
+		_, err = io.ReadAll(io.TeeReader(f, queryWriter{Query: query, Writer: os.Stdout}))
 		return err
 	})
 	if err != nil {

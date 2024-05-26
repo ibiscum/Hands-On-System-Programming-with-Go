@@ -33,7 +33,7 @@ func NewClient(tick time.Duration, key string) *Client {
 type Client struct {
 	client *http.Client
 	tick   *time.Ticker
-	apiKey string
+	// apiKey string
 }
 
 func (c *Client) Close() {
