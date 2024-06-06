@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"context"
 	"io"
-	"io/ioutil"
 	"log"
 	"strings"
 	"sync"
@@ -94,7 +93,7 @@ func MergeCounts(ctx context.Context, src ...<-chan map[string]int) map[string]i
 func main() {
 	ctx, canc := context.WithCancel(context.Background())
 	defer canc()
-	src := SourceLineWords(ctx, ioutil.NopCloser(strings.NewReader(cantoUno)))
+	src := SourceLineWords(ctx, io.NopCloser(strings.NewReader(cantoUno)))
 	count1, count2 := WordOccurrence(ctx, src), WordOccurrence(ctx, src)
 	final := MergeCounts(ctx, count1, count2)
 	log.Println(final)

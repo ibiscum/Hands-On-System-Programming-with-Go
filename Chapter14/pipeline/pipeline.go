@@ -5,7 +5,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"strings"
 )
@@ -67,7 +66,7 @@ func Printer(ctx context.Context, src <-chan string, color int, highlight string
 func main() {
 	search := "in"
 	ctx := context.Background()
-	src := SourceLine(ctx, ioutil.NopCloser(strings.NewReader(cantoUno)))
+	src := SourceLine(ctx, io.NopCloser(strings.NewReader(cantoUno)))
 	filter := TextFilter(ctx, src, search)
 	Printer(ctx, filter, 31, search, os.Stdout)
 }

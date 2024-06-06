@@ -38,5 +38,7 @@ func main() {
 		} else {
 			log.Println("Shutdown:", "ok")
 		}
+	default:
+		log.Println("Default")
 	}
 }

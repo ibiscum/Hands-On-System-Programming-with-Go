@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/signal"
@@ -82,7 +81,7 @@ func changeSettings(d *time.Duration, v time.Duration) {
 }
 
 func loadSettings(d *time.Duration) error {
-	b, err := ioutil.ReadFile(cfgPath)
+	b, err := os.ReadFile(cfgPath)
 	if err != nil {
 		return err
 	}

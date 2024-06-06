@@ -37,7 +37,7 @@ func main() {
 			if err != nil {
 				log.Println("-> Message error:", err)
 			}
-			if bytes.Compare(msg, []byte{'\\', 'q'}) == 0 {
+			if bytes.Equal(msg, []byte{'\\', 'q'}) {
 				canc()
 				continue
 			}

@@ -3,12 +3,16 @@ package main
 import (
 	"fmt"
 	"io"
+	"log"
 
 	"github.com/ibiscum/Hands-On-Systems-Programming-with-Go/Chapter06/advanced/extend/command"
 )
 
 func init() {
-	command.Register(&Stack{})
+	err := command.Register(&Stack{})
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 type Stack struct{ data []string }

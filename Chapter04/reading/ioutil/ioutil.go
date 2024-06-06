@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 )
 
@@ -11,7 +10,7 @@ func main() {
 		fmt.Println("Please specify a path.")
 		return
 	}
-	b, err := ioutil.ReadFile(os.Args[1])
+	b, err := os.ReadFile(os.Args[1])
 	if err != nil {
 		fmt.Println("Error:", err)
 	}

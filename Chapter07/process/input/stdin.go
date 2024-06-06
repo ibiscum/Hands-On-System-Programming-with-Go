@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 )
@@ -17,5 +18,8 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	cmd.Wait()
+	err := cmd.Wait()
+	if err != nil {
+		log.Fatal(err)
+	}
 }

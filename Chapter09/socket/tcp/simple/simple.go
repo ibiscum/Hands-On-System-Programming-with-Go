@@ -59,7 +59,7 @@ func handleConn(conn net.Conn) {
 	for {
 		msg, err := r.ReadString('\n')
 		if err != nil {
-			if nerr, ok := err.(net.Error); ok && !nerr.Temporary() {
+			if _, ok := err.(net.Error); ok {
 				log.Println("<- Network error:", err)
 				return
 			}

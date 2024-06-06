@@ -5,7 +5,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/signal"
 	"path/filepath"
@@ -34,7 +33,7 @@ func main() {
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())
-	c := make(chan os.Signal)
+	c := make(chan os.Signal, 1)
 	signal.Notify(c, syscall.SIGTERM, syscall.SIGINT)
 	go func() {
 		<-c
@@ -115,7 +114,7 @@ func fileSearch(ctx context.Context, ch chan<- Result, wg *sync.WaitGroup, file,
 		return
 	}
 	if info.IsDir() {
-		files, err := ioutil.ReadDir(file)
+		files, err := os.ReadDir(file)
 		if err != nil {
 			select {
 			case <-ctx.Done():

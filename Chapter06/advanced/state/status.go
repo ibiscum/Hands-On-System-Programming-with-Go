@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -12,7 +13,10 @@ import (
 )
 
 func init() {
-	command.Register(&Stack{})
+	err := command.Register(&Stack{})
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 type Stack struct {
