@@ -24,7 +24,7 @@ func main() {
 		return
 	}
 	defer dst.Close()
-	cur, err := src.Seek(0, os.SEEK_END) // Let's go to the end of the file
+	cur, err := src.Seek(0, io.SeekEnd) // Let's go to the end of the file
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
@@ -35,7 +35,7 @@ func main() {
 			b, step = b[:cur], cur
 		}
 		cur = cur - step
-		_, err = src.Seek(cur, os.SEEK_SET) // go backwards
+		_, err = src.Seek(cur, io.SeekCurrent) // go backwards
 		if err != nil {
 			break
 		}

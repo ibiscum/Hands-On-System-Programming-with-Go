@@ -3,7 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -103,12 +103,13 @@ func uninstallApp() error {
 		return errors.New("not installed")
 	}
 	if err = os.Remove(initdFile); err != nil {
-		if err != nil {
-			if !os.IsPermission(err) {
-				return err
-			}
-			return ErrSudo
-		}
+		// if err != nil {
+		// 	if !os.IsPermission(err) {
+		// 		return err
+		// 	}
+		// 	return ErrSudo
+		// }
+		log.Fatal(err)
 	}
 	fmt.Println("Daemon", bin, "removed")
 	return err
@@ -155,12 +156,12 @@ func writePid(pid int) (err error) {
 }
 
 func getPid() (pid int, err error) {
-	b, err := ioutil.ReadFile(filepath.Join(varDir, pidFile))
+	b, err := os.ReadFile(filepath.Join(varDir, pidFile))
 	if err != nil {
 		return 0, err
 	}
 	if pid, err = strconv.Atoi(string(b)); err != nil {
-		return 0, fmt.Errorf("Invalid PID value: %s", string(b))
+		return 0, fmt.Errorf("invalid PID value: %s", string(b))
 	}
 	return pid, nil
 }
