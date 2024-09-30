@@ -3,7 +3,7 @@ module github.com/ibiscum/Hands-On-Systems-Programming-with-Go
 go 1.22.1
 
 require (
-	github.com/agnivade/levenshtein v1.1.1
+	github.com/agnivade/levenshtein v1.2.0
 	github.com/tatsushid/go-fastping v0.0.0-20160109021039-d7bb493dee3e
 	golang.org/x/sync v0.8.0
 	google.golang.org/protobuf v1.34.2
