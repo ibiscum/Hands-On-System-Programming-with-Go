@@ -12,6 +12,11 @@ require (
 )
 
 require (
+<<<<<<< dependabot/go_modules/go_modules-c153b83258
+	golang.org/x/net v0.36.0 // indirect
+	golang.org/x/sys v0.30.0 // indirect
+=======
 	golang.org/x/net v0.53.0 // indirect
 	golang.org/x/sys v0.43.0 // indirect
+>>>>>>> master
 )
